@@ -1,0 +1,7 @@
+RAG stands for Retrieval Augmented Generation.
+It improves LLM answers by retrieving relevant documents first.
+
+Vector databases store embeddings of text.
+FAISS is a popular open-source vector database.
+
+Gemini 2.5 Flash is a fast reasoning model from Google.

@@ -1,0 +1,39 @@
+{# templates/dashboard.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Welcome, {{ current_user.username }} 👋</h3>
+    <p class="text-muted">Here are your uploaded documents:</p>
+
+    {% if documents %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Filename</th>
+                    <th>Uploaded At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doc in documents %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ doc.filename }}</td>
+                    <td>{{ doc.upload_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>
+                        <a href="{{ url_for('ask', doc_id=doc.id) }}" class="btn btn-primary btn-sm">Ask</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No documents uploaded yet. <a href="{{ url_for('upload') }}">Upload now</a></p>
+    {% endif %}
+
+    <a href="{{ url_for('upload') }}" class="btn btn-success mt-3">Upload New Document</a>
+    <a href="{{ url_for('logout') }}" class="btn btn-danger mt-3 float-end">Logout</a>
+</div>
+{% endblock %}

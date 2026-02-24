@@ -1,0 +1,33 @@
+{# templates/ask.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Document: {{ document.filename }}</h3>
+    <p class="text-muted">Ask questions about this document.</p>
+
+    {# Question Form: POST to /ask/<doc_id> #}
+    <form method="POST" action="{{ url_for('ask', doc_id=document.id) }}">
+        <div class="mb-3">
+            <label for="question" class="form-label">Your Question</label>
+            <input type="text" class="form-control" id="question" name="question" placeholder="Type your question..." required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ask</button>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary ms-2">Back to Dashboard</a>
+    </form>
+
+    {# Show Answer if available #}
+    {% if answer %}
+        <div class="card mt-4">
+            <div class="card-header">
+                Answer
+            </div>
+            <div class="card-body">
+                <p>{{ answer }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {# Optional: Show previous questions/answers if you implement history #}
+</div>
+{% endblock %}
