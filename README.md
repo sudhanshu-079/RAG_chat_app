@@ -1,4 +1,4 @@
-# 🧠 AI Knowledge Vault (RAG System)
+ 🧠 AI Knowledge Vault (RAG System)
 
 A production-style Retrieval-Augmented Generation (RAG) system built using:
 
